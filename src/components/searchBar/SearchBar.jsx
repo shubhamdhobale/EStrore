@@ -60,7 +60,7 @@ const SearchBar = () => {
                             <div key={index} className="px-1 py-1 w-40">
                                 <div className="flex items-center gap-2">
                                     <img className="w-10" src={item.image} alt="" />
-                                    <h1 className="text-black font-bold">{item.name}</h1>
+                                    <h1 className="text-[#222831] font-bold">{item.name}</h1>
                                 </div>
                             </div>
                         )

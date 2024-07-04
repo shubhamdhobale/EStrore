@@ -3,11 +3,11 @@ import SearchBar from '../searchBar/SearchBar';
 
 const Navbar = () => {
   return (
-    <nav className='bg-black sticky top-0 text-white'>
+    <nav className='bg-[#222831] sticky top-0 text-[#EEEEEE] z-50'>
       <div className='lg:flex lg:justify-between lg:items-center py-4 lg:px-8'>
         <div className='left py-3 lg:py-0'>
           <Link to='/'>
-          <h1 className='font-body text-white text-2xl text-center'>EStore</h1>
+          <h1 className='font-body  text-2xl text-center'>EStore</h1>
           </Link>
         </div>
         <div className='right flex justify-center mb-4 lg:mb-0'>
