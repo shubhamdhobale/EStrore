@@ -34,6 +34,7 @@ const category = [
   }
 ]
 
+
 const Category = () => {
   return (
       <div>
