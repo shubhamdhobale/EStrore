@@ -17,6 +17,8 @@ const Navbar = () => {
               <li><Link to='/cart'>Cart(0)</Link></li>
               <li><Link to='/signup'>Signup</Link></li>
               <li><Link to='/login'>Login</Link></li>
+              <li><Link to='/user-dashboard'>profile</Link></li>
+              <li><Link to='/admin-dashboard'>Admin</Link></li>
           </ul>
         </div>
         <SearchBar/>
