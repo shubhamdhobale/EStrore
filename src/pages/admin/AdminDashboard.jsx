@@ -118,7 +118,7 @@ const AdminDashboard = () => {
 
                                     </div>
                                     <h2 className="title-font font-medium text-3xl text-[#00ADB5] fonts1" >10</h2>
-                                    <p className=" text-[#00ADB5]  font-bold" >Total Order</p>
+                                    <p className=" text-[#00ADB5]  font-bold" >Total Users</p>
                                 </div>
                             </Tab>
                         </TabList>
