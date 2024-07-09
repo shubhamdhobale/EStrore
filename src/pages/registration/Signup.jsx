@@ -19,14 +19,15 @@ const Signup = () => {
     const navigate = useNavigate();
 
     const [formData , setFormData] = useState({
-        name:"",
+        firstname:"",
+        lastname:"",
         email: "",
         password: "",
         role:"user"
     })
 
     const handleSubmit =  async () => {
-        if(formData.name == "" || formData.email == "" || formData.password == ""){
+        if(formData.firstname == "" || formData.lastname == "" || formData.email == "" || formData.password == ""){
             return toast.error("All Fields are required");
         }
         setLoading(true);
@@ -35,7 +36,8 @@ const Signup = () => {
             const users = await createUserWithEmailAndPassword(auth , formData.email , formData.password);
 
             const user = {
-                name: formData.name,
+                firstname: formData.firstname,
+                lastname: formData.lastname,
                 email: formData.email,
                 role: formData.role,
                 uid: users.user.uid,
@@ -55,7 +57,8 @@ const Signup = () => {
             addDoc(userRefrence , user);
 
             setFormData({
-                name:"",
+                firstname:"",
+                lastname:"",
                 email: "",
                 password: "",
             })
@@ -96,10 +99,20 @@ const Signup = () => {
                 <div className="mb-3">
                     <input
                         type="text"
-                        placeholder='Full Name'
-                        value={formData.name}
+                        placeholder='First Name'
+                        value={formData.firstname}
                         onChange={handleChange}
-                        name="name"
+                        name="firstname"
+                        className=' border border-[#00ADB5] px-2 py-2 w-96 rounded-md outline-none placeholder-[#00ADB5]'
+                    />
+                </div>
+                <div className="mb-3">
+                    <input
+                        type="text"
+                        placeholder='last Name'
+                        value={formData.lastname}
+                        onChange={handleChange}
+                        name="lastname"
                         className=' border border-[#00ADB5] px-2 py-2 w-96 rounded-md outline-none placeholder-[#00ADB5]'
                     />
                 </div>

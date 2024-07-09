@@ -2,10 +2,14 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import ProductDetail from '../../components/admin/ProductDetails';
 import OrderDetail from '../../components/admin/OrderDetails'
 import UserDetail from '../../components/admin/UserDetails'
+import Layout from '../../components/layout/Layout'
 
 const AdminDashboard = () => {
+
+    const user = JSON.parse(localStorage.getItem("users"))
+
     return (
-        <div>
+        <Layout>
             {/* Top */}
             <div className="top mb-5 px-5 mt-5">
                 <div className=" py-5">
@@ -24,8 +28,10 @@ const AdminDashboard = () => {
                         </div>
                         {/* text  */}
                         <div className="flex-col flex gap-2">
-                            <h1 className=" text-center text-lg text-[#393E46]"><span className=" font-bold">Name :</span> Kamal Nayan Upadhyay</h1>
-                            <h1 className=" text-center text-lg text-[#393E46]"><span className=" font-bold">Email :</span> test@gmail.com</h1>
+                            <h1 className=" text-center text-lg text-[#393E46]"><span className=" font-bold">Name :</span>{user.firstname} {user.lastname}</h1>
+                            <h1 className=" text-center text-lg text-[#393E46]"><span className=" font-bold">Email :</span> {user.email}</h1>
+                            <h1 className=" text-center text-lg text-[#393E46]"><span className=" font-bold">Account Created : :</span> {user.date}</h1>
+                            <h1 className=" text-center text-lg text-[#393E46]"><span className=" font-bold">Role :</span> {user.role}</h1>
                         </div>
                     </div>
                 </div>
@@ -140,7 +146,7 @@ const AdminDashboard = () => {
                     </Tabs>
                 </div>
             </div>
-        </div>
+        </Layout>
     );
 }
 
