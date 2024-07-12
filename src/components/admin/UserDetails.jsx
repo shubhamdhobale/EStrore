@@ -1,42 +1,50 @@
-const UserDetail = () => {
-  return (
-      <div>
-             <div>
-          <div className="py-5 flex justify-between items-center">
-              {/* text  */}
-              <h1 className=" text-xl text-[#393E46] font-bold">All User</h1>
-          </div>
+import { useContext } from "react";
+import myContext from "../../context/myContext";
 
-          {/* table  */}
-          <div className="w-full overflow-x-auto">
-              <table className="w-full text-left border border-collapse sm:border-separate border-[#00ADB5] text-[#393E46]" >
-                  <tbody>
-                      <tr>
-                          <th scope="col" className="h-12 px-6 text-md border-l first:border-l-0 border-[#00ADB5] text-slate-700 bg-slate-100 font-bold fontPara">S.No.</th>
-                          <th scope="col" className="h-12 px-6 text-md font-bold fontPara border-l first:border-l-0 border-[#00ADB5] text-slate-700 bg-slate-100">Location Name</th>
-                          <th scope="col" className="h-12 px-6 text-md font-bold fontPara border-l first:border-l-0 border-[#00ADB5] text-slate-700 bg-slate-100">Action</th>
-                          <th scope="col" className="h-12 px-6 text-md font-bold fontPara border-l first:border-l-0 border-[#00ADB5] text-slate-700 bg-slate-100">Action</th>
-                      </tr>
-                      <tr className="text-[#393E46]">
-                          <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-[#00ADB5] stroke-slate-500 text-slate-500 ">
-                              1.
-                          </td>
-                          <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-[#00ADB5] stroke-slate-500 text-slate-500 first-letter:uppercase ">
-                              {'name'}
-                          </td>
-                          <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-[#00ADB5] stroke-slate-500 text-slate-500 text-green-500 cursor-pointer ">
-                              Edit
-                          </td>
-                          <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-[#00ADB5] stroke-slate-500 text-slate-500 text-red-500 cursor-pointer ">
-                              Delete
-                          </td>
-                      </tr>
-                  </tbody>
-              </table>
-          </div>
-      </div>
-      </div>
-  );
+const UserDetail = () => {
+    const context = useContext(myContext);
+    const { getAllUser } = context;
+    console.log(getAllUser)
+
+    return (
+        <div>
+            <div>
+                <div className="py-5 ">
+                    <h1 className=" text-3xl text-center py-4 font-bold">All User</h1>
+                </div>
+                <div className="w-full overflow-x-auto py-8">
+                    <table className="w-full border border-collapse sm:border-separate border-black" >
+                        <tbody>
+                            <tr className="bg-[#00acb57a]">
+                                <th scope="col" className="h-12 px-6">S.No.</th>
+                                <th scope="col" className="h-12 px-6 border-l border-black">Name</th>
+                                <th scope="col" className="h-12 px-6 border-l border-black">Email</th>
+                                <th scope="col" className="h-12 px-6 border-l border-black">Uid</th>
+                                <th scope="col" className="h-12 px-6 border-l border-black">Role</th>
+                                <th scope="col" className="h-12 px-6 border-l border-black">Date</th>
+                            </tr>
+
+                            {
+                                getAllUser.map((value, index) => {
+                                    return (
+                                        <tr key={index}>
+                                            <td className="h-12 px-6 border-t border-black">{index + 1}</td>
+                                            <td className="h-12 px-6 border-t border-l border-black ">{value.firstname} {value.lastname}</td>
+                                            <td className="h-12 px-6 border-t border-l border-black">{value.email}</td>
+                                            <td className="h-12 px-6 border-t border-l border-black ">{value.uid}</td>
+                                            <td className="h-12 px-6 border-t border-l border-black ">{value.role}</td>
+                                            <td className="h-12 px-6 border-t border-l border-black">{value.date}</td>
+                                        </tr>
+                                    )
+                                })
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default UserDetail;

@@ -5,11 +5,15 @@ import { useParams } from "react-router";
 import { fireDB } from "../../firebase/FirebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
 import Loader from "../../components/loader/Loader";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, deleteFromCart } from "../../redux/CardSlice";
+import toast from "react-hot-toast";
 
 const ProductInfo = () => {
     const context = useContext(myContext);
     const { loading, setLoading } = context;
-
+    const dispatch = useDispatch();
+    const cartItem = useSelector((state) => state.cart)
     const [product, setProduct] = useState('')
 
     const { id } = useParams()
@@ -26,6 +30,19 @@ const ProductInfo = () => {
         }
     }
 
+    const addCart = (item) => {
+        dispatch(addToCart(item))
+        toast.success("Added to Cart")
+    }
+
+    const deleteCart = (item) => {
+        dispatch(deleteFromCart(item))
+        toast.success("Deleted from Cart")
+    }
+
+    useEffect(() => {
+        localStorage.setItem('cart', JSON.stringify(cartItem))
+    } , [cartItem])
 
     useEffect(() => {
         getProductData()
@@ -137,13 +154,23 @@ const ProductInfo = () => {
 
                                         <div className="mb-6 " />
                                         <div className="flex flex-wrap items-center mb-6">
-
-
-                                            <button
+                                            {
+                                                cartItem.some((p) => p.id === product.id) ? (
+                                                    <button
+                                                onClick={() => deleteCart(product)}
                                                 className="w-full px-4 py-3 text-center text-pink-600 bg-pink-100 border border-pink-600  hover:bg-pink-600 hover:text-gray-100  rounded-xl"
                                             >
-                                                Add to cart
+                                                Delete from cart
                                             </button>
+                                                ) : (
+                                                    <button
+                                                    onClick={() => addCart(product)}
+                                                    className="w-full px-4 py-3 text-center text-pink-600 bg-pink-100 border border-pink-600  hover:bg-pink-600 hover:text-gray-100  rounded-xl"
+                                                >
+                                                    Add to cart
+                                                </button>
+                                            )
+                                            }
                                         </div>
                                     </div>
                                 </div>

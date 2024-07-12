@@ -8,15 +8,15 @@ import toast from "react-hot-toast";
 
 const ProductDetail = () => {
     const context = useContext(myContext);
-    const { loading, setLoading ,  getAllProduct , getAllProductFunction} = context;
-    // console.log(getAllProduct)
-    const navigate = useNavigate();     
+    const { loading, setLoading, getAllProduct, getAllProductFunction } = context;
+    const navigate = useNavigate();
+
 
     const deleteProduct = async (id) => {
         setLoading(true)
         try {
-            await deleteDoc(doc(fireDB , "products" , id))
-            toast.success("Product successfully deleted")
+            await deleteDoc(doc(fireDB, 'products', id))
+            toast.success('Product Deleted successfully')
             getAllProductFunction();
             setLoading(false)
         } catch (error) {
@@ -25,70 +25,47 @@ const ProductDetail = () => {
         }
     }
 
+
     return (
         <div>
-            <div className="py-5 flex justify-between items-center">
-                {/* text  */}
-                <h1 className=" text-xl text-pink-300 font-bold">All Product</h1>
-                {/* Add Product Button  */}
+            <div className="py-5">
+                <h1 className="text-3xl text-center font-bold pt-4">All Product</h1>
                 <Link to={'/addproduct'}>
-                    <button className="px-5 py-2 bg-pink-50 border border-pink-100 rounded-lg">Add Product</button>
+                    <button className="px-5 py-2 bg-[#00ADB5] font-bold rounded-lg">Add Product</button>
                 </Link>
             </div>
-
-            {/* Loading  */}
             <div className="flex justify-center relative top-20">
                 {loading && <Loader />}
             </div>
+            <div className="w-full overflow-x-auto mb-5 py-8">
 
-            {/* table  */}
-            <div className="w-full overflow-x-auto mb-5">
-
-                <table className="w-full text-left border border-collapse sm:border-separate border-pink-100 text-pink-400" >
-
+                <table className="w-full border border-collapse sm:border-separate border-black" >
                     <tbody>
-                        <tr>
-                            <th scope="col" className="h-12 px-6 text-md border-l first:border-l-0 border-pink-100 text-slate-700 bg-slate-100 font-bold fontPara">S.No.</th>
-                            <th scope="col" className="h-12 px-6 text-md border-l first:border-l-0 border-pink-100 text-slate-700 bg-slate-100 font-bold fontPara">Image</th>
-                            <th scope="col" className="h-12 px-6 text-md font-bold fontPara border-l first:border-l-0 border-pink-100 text-slate-700 bg-slate-100">Title</th>
-                            <th scope="col" className="h-12 px-6 text-md font-bold fontPara border-l first:border-l-0 border-pink-100 text-slate-700 bg-slate-100">Price</th>
-                            <th scope="col" className="h-12 px-6 text-md font-bold fontPara border-l first:border-l-0 border-pink-100 text-slate-700 bg-slate-100">Category</th>
-                            <th scope="col" className="h-12 px-6 text-md font-bold fontPara border-l first:border-l-0 border-pink-100 text-slate-700 bg-slate-100"> Date</th>
-                            <th scope="col" className="h-12 px-6 text-md font-bold fontPara border-l first:border-l-0 border-pink-100 text-slate-700 bg-slate-100">Action</th>
-                            <th scope="col" className="h-12 px-6 text-md font-bold fontPara border-l first:border-l-0 border-pink-100 text-slate-700 bg-slate-100">Action</th>
+                        <tr className="bg-[#00acb57a]">
+                            <th scope="col" className="h-12 px-6">S.No.</th>
+                            <th scope="col" className="h-12 px-6  border-l border-black ">Image</th>
+                            <th scope="col" className="h-12 px-6 border-l border-black  ">Title</th>
+                            <th scope="col" className="h-12 px-6 border-l border-black  ">Price</th>
+                            <th scope="col" className="h-12 px-6 border-l border-black  ">Category</th>
+                            <th scope="col" className="h-12 px-6 border-l border-black  "> Date</th>
+                            <th scope="col" className="h-12 px-6 border-l border-black  ">Action</th>
+                            <th scope="col" className="h-12 px-6 border-l border-black  ">Action</th>
                         </tr>
+
                         {getAllProduct.map((item, index) => {
-                            const { id , title, price, category, date, productImageUrl } = item
+                            const { id, title, price, category, date, productImageUrl } = item
                             return (
-                                <tr key={index} className="text-pink-300">
-                                    <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 ">
-                                        {index + 1}.
+                                <tr key={index}>
+                                    <td className="h-12 px-6 border-t border-black">{index + 1}.</td>
+                                    <td className="h-12 px-6 border-t border-l border-black">
+                                        <img className="w-20 " src={productImageUrl} alt="" />
                                     </td>
-                                    <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 first-letter:uppercase ">
-                                        <div className="flex justify-center">
-                                            <img className="w-20 " src={productImageUrl} alt="" />
-                                        </div>
-                                    </td>
-                                    <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 first-letter:uppercase ">
-                                        {title}
-                                    </td>
-                                    <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 first-letter:uppercase ">
-                                        ₹{price}
-                                    </td>
-                                    <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 first-letter:uppercase ">
-                                        {category}
-                                    </td>
-                                    <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 first-letter:uppercase ">
-                                        {date}
-                                    </td>
-                                    <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 text-green-500 cursor-pointer "
-                                    onClick={() => navigate(`/updateproduct/:${id}`)}>
-                                        Edit
-                                    </td>
-                                    <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-pink-100 stroke-slate-500 text-slate-500 text-red-500 cursor-pointer "
-                                    onClick={() => deleteProduct(id)}>
-                                        Delete
-                                    </td>
+                                    <td className="h-12 px-6 border-t border-l border-black first-letter:uppercase ">{title}</td>
+                                    <td className="h-12 px-6 border-t border-l border-black first-letter:uppercase ">₹{price}</td>
+                                    <td className="h-12 px-6 border-t border-l border-black first-letter:uppercase ">{category}</td>
+                                    <td className="h-12 px-6 border-t border-l border-black first-letter:uppercase ">{date}</td>
+                                    <td onClick={()=> navigate(`/updateproduct/${id}`)} className="h-12 px-6 border-t border-l border-black text-green-500 cursor-pointer font-bold">Edit</td>
+                                    <td onClick={()=> deleteProduct(id)} className="h-12 px-6 border-t border-l border-black text-red-500 cursor-pointer font-bold">Delete</td>
                                 </tr>
                             )
                         })}

@@ -38,20 +38,20 @@ const category = [
 const Category = () => {
     const navigate = useNavigate();
     return (
-        <div>
+        <div className="py-4 shadow-2xl pb-12">
             <div className="flex flex-col mt-5">
+                <h1 className="font-bold text-center text-2xl py-8">Shop by Category</h1>
                 <div className="flex overflow-x-scroll lg:justify-center  hide-scroll-bar">
-                    <div className="flex ">
+                    <div className="flex">
                         {category.map((item, index) => {
                             return (
-                                <div key={index} className="px-3 lg:px-10">
-                                    <div onClick={() => navigate(`/category/${item.name}`)} className=" w-16 h-16 lg:w-24 lg:h-24 max-w-xs rounded-full  bg-pink-500 transition-all hover:bg-pink-400 cursor-pointer mb-1 "  >
+                                <div key={index} className="px-3 lg:px-10 hover:text-blue-500 hover:underline duration-500 ">
+                                    <div onClick={() => navigate(`/category/${item.name}`)} className=" w-16 h-16 lg:w-24 lg:h-24 max-w-xs rounded-full  bg-[#00ADB5] transition-all hover:bg-[#1ab0b8] cursor-pointer mb-1"  >
                                         <div className="flex justify-center mb-12">
-                                            <img src={item.image} alt="img" />
+                                            <img src={item.image} alt="img" className="hover:scale-110 duration-700"/>
                                         </div>
                                     </div>
-
-                                    <h1 className=' text-sm lg:text-lg text-center font-medium title-font '>{item.name}</h1>
+                                    <h1 className=' text-sm lg:text-lg text-center font-bold first-letter:uppercase'>{item.name}</h1>
                                 </div>
                             )
                         })}

@@ -1,42 +1,74 @@
-const OrderDetail = () => {
-  return (
-      <div>
-             <div>
-          <div className="py-5">
-              {/* text  */}
-              <h1 className=" text-xl text-[#393E46] font-bold">All Order</h1>
-          </div>
+import { useContext } from "react";
+import myContext from "../../context/myContext";
 
-          {/* table  */}
-          <div className="w-full overflow-x-auto">
-              <table className="w-full text-left border border-collapse sm:border-separate border-[#00ADB5] text-[#393E46]" >
-                  <tbody>
-                      <tr>
-                          <th scope="col" className="h-12 px-6 text-md border-l first:border-l-0 border-[#00ADB5] text-slate-700 bg-slate-100 font-bold fontPara">S.No.</th>
-                          <th scope="col" className="h-12 px-6 text-md font-bold fontPara border-l first:border-l-0 border-[#00ADB5] text-slate-700 bg-slate-100">Location Name</th>
-                          <th scope="col" className="h-12 px-6 text-md font-bold fontPara border-l first:border-l-0 border-[#00ADB5] text-slate-700 bg-slate-100">Action</th>
-                          <th scope="col" className="h-12 px-6 text-md font-bold fontPara border-l first:border-l-0 border-[#00ADB5] text-slate-700 bg-slate-100">Action</th>
-                      </tr>
-                      <tr className="text-[#393E46]">
-                          <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-[#00ADB5] stroke-slate-500 text-slate-500 ">
-                              1.
-                          </td>
-                          <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-[#00ADB5] stroke-slate-500 text-slate-500 first-letter:uppercase ">
-                              {'name'}
-                          </td>
-                          <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-[#00ADB5] stroke-slate-500 text-slate-500 text-green-500 cursor-pointer ">
-                              Edit
-                          </td>
-                          <td className="h-12 px-6 text-md transition duration-300 border-t border-l first:border-l-0 border-[#00ADB5] stroke-slate-500 text-slate-500 text-red-500 cursor-pointer ">
-                              Delete
-                          </td>
-                      </tr>
-                  </tbody>
-              </table>
-          </div>
-      </div>
-      </div>
-  );
+const OrderDetail = () => {
+    const context = useContext(myContext);
+    const { getAllOrder, deleteProduct } = context;
+
+    return (
+        <div>
+            <div>
+                <div className="py-5">
+                    <h1 className="text-3xl text-black pt-4 font-bold text-center">All Order</h1>
+                </div>
+                <div className="w-full overflow-x-auto px-4 py-8">
+                    <table className="w-full text-left border border-collapse sm:border-separate border-black" >
+                        <tbody>
+                          <tr className="bg-[#00acb57a]">
+                            <th scope="col" className="h-12 px-6 text-md border-l ">S.No.</th>
+                            <th scope="col" className="h-12 px-6 border-l border-black">Order Id</th>
+                            <th scope="col" className="h-12 px-6 border-l border-black">Image</th>
+                            <th scope="col" className="h-12 px-6 border-l border-black">Title</th>
+                            <th scope="col" className="h-12 px-6 border-l border-black">Category</th>
+                            <th scope="col" className="h-12 px-6 border-l border-black">Price</th>
+                            <th scope="col" className="h-12 px-6 border-l border-black">Quantity</th>
+                            <th scope="col" className="h-12 px-6 border-l border-black">Total Price</th>
+                            <th scope="col" className="h-12 px-6 border-l border-black">Status</th>
+                            <th scope="col" className="h-12 px-6 border-l border-black">Name</th>
+                            <th scope="col" className="h-12 px-6 border-l border-black">Address</th>
+                            <th scope="col" className="h-12 px-6 border-l border-black">Pincode</th>
+                            <th scope="col" className="h-12 px-6 border-l border-black">Phone Number</th>
+                            <th scope="col" className="h-12 px-6 border-l border-black">Email</th>
+                            <th scope="col" className="h-12 px-6 border-l border-black">Date</th>
+                            <th scope="col" className="h-12 px-6 border-l border-black">Action</th>
+                          </tr>
+
+
+                        {getAllOrder.map((order) => {
+                            return (
+                                <>
+                                {order.cartItems.map((item, index) => {
+                                    const { id, productImageUrl, title, category, price, quantity } = item
+                                    return (
+                                    <tr key={index}>
+                                        <td className="h-12 px-6 border-t border-black">{index + 1}</td>
+                                        <td className="h-12 px-6 border-t border-l border-black hover:text-blue-500 hover:underline cursor-pointer">{id}</td>
+                                        <td className="h-12 px-6 border-t border-l border-black"><img src={productImageUrl}/></td>
+                                        <td className="h-12 px-6 border-t border-l border-black">{title}</td>
+                                        <td className="h-12 px-6 border-t border-l border-black">{category}</td>
+                                        <td className="h-12 px-6 border-t border-l border-black">₹{price}</td>
+                                        <td className="h-12 px-6 border-t border-l border-black">{quantity}</td>
+                                        <td className="h-12 px-6 border-t border-l border-black">₹{price * quantity}</td>
+                                        <td className="h-12 px-4 border-t border-l text-green-600  border-black font-bold">{order.status}</td>
+                                        <td className="h-12 px-6 border-t border-l border-black">{order.addressInfo.name}</td>
+                                        <td className="h-12 px-6 border-t border-l border-black">{order.addressInfo.address}</td>
+                                        <td className="h-12 px-6 border-t border-l border-black">{order.addressInfo.pincode}</td>
+                                        <td className="h-12 px-6 border-t border-l border-black">{order.addressInfo.mobileNumber}</td>
+                                        <td className="h-12 px-6 border-t border-l border-black">{order.email}</td>
+                                        <td className="h-12 px-6 border-t border-l border-black">{order.date}</td>
+                                        <td className="h-12 px-6 border-t border-l border-black text-red-500 cursor-pointer " onClick={()=> deleteProduct(order.id)}>Delete</td>
+                                    </tr>
+                                            )
+                                        })}
+                                    </>
+                                )
+                            })}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    );
 }
 
 export default OrderDetail;

@@ -1,4 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { FaUser } from "react-icons/fa6"
 
 const Testimonial = () => {
   return (
@@ -15,7 +17,7 @@ const Testimonial = () => {
                       {/* Testimonial 1 */}
                       <div className="lg:w-1/3 lg:mb-0 mb-6 p-4">
                           <div className="h-full text-center">
-                              <img alt="testimonial" className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100" src="https://ecommerce-sk.vercel.app/img/kamal.png" />
+                            <FaUser  className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100" />
                               <p className="leading-relaxed">Edison bulb retro cloud bread echo park, helvetica stumptown taiyaki taxidermy 90's cronut +1 kinfolk. Single-origin coffee ennui shaman taiyaki vape DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.</p>
                               <span className="inline-block h-1 w-10 rounded bg-[#00ADB5] mt-6 mb-4" />
                               <h2 className="text-gray-900 font-medium title-font tracking-wider text-sm uppercase">Kamal Nayan Upadhyay</h2>
@@ -37,8 +39,9 @@ const Testimonial = () => {
                       {/* Testimonial 3 */}
                       <div className="lg:w-1/3 lg:mb-0 p-4">
                           <div className="h-full text-center">
-                              <img alt="testimonial" className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100" src="https://firebasestorage.googleapis.com/v0/b/devknus-official-database.appspot.com/o/images%2FScreenshot%202023-07-07%20at%202.20.32%20PM-modified.png?alt=media&token=324ddd80-2b40-422c-9f1c-1c1fa34943fa" />
-                              <p className="leading-relaxed">Edison bulb retro cloud bread echo park, helvetica stumptown taiyaki taxidermy 90's cronut +1 kinfolk. Single-origin coffee ennui shaman taiyaki vape DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.</p>
+                          {/* <FontAwesomeIcon icon="fa-solid fa-user" />                               */}
+                          <img src="https://static.vecteezy.com/system/resources/thumbnails/004/607/791/small_2x/man-face-emotive-icon-smiling-male-character-in-blue-shirt-flat-illustration-isolated-on-white-happy-human-psychological-portrait-positive-emotions-user-avatar-for-app-web-design-vector.jpg" alt="" className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block border-2 border-gray-200 bg-gray-100"/>
+                          <p className="leading-relaxed">Edison bulb retro cloud bread echo park, helvetica stumptown taiyaki taxidermy 90's cronut +1 kinfolk. Single-origin coffee ennui shaman taiyaki vape DIY tote bag drinking vinegar cronut adaptogen squid fanny pack vaporware.</p>
                               <span className="inline-block h-1 w-10 rounded bg-[#00ADB5
 ] mt-6 mb-4" />
                               <h2 className="text-gray-900 font-medium title-font tracking-wider text-sm uppercase">XYZ </h2>

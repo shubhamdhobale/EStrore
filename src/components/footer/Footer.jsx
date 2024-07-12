@@ -1,94 +1,57 @@
+import { FaEnvelope, FaFacebook, FaInstagram, FaMapMarkerAlt, FaPhone, FaTwitter, FaWhatsapp } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const Footer = () => {
+const Footer = () => { 
     return (
-        <div>
+        <div>   
             {/* footer  */}
-            <footer className="text-gray-600 body-font bg-[#00ADB5]">
-                {/* main  */}
-                <div className="container px-5 py-5 mx-auto flex items-center sm:flex-row flex-col">
-                    {/* logo  */}
-                    <a className="flex title-font font-medium items-center md:justify-start justify-center text-white">
-                        <span className="text-xl font-bold">E-Store</span>
-                    </a>
-                    {/* para  */}
-                    <p className="text-sm text-gray-100 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
-                        © 2024 estore —
-                        <Link
-                        to={'/'}
-                            className="text-gray-100 ml-1"
-                            rel="noopener noreferrer"
-                            target="_blank"
-                        >
-                            @estore
-                        </Link>
-                    </p>
-                    
-                    {/* media icon  */}
-                    <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-                        {/* facebook  */}
-                        <a className="text-gray-100 cursor-pointer">
-                            <svg
-                                fill="currentColor"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                className="w-5 h-5"
-                                viewBox="0 0 24 24"
-                            >
-                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
-                            </svg>
-                        </a>
+            <footer className="w-full relative">
+                <div className="">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                        <path fill="#00ADB5" fillOpacity="1" d="M0,64L30,96C60,128,120,192,180,181.3C240,171,300,85,360,42.7C420,0,480,0,540,42.7C600,85,660,171,720,176C780,181,840,107,900,74.7C960,43,1020,53,1080,85.3C1140,117,1200,171,1260,192C1320,213,1380,203,1410,197.3L1440,192L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path>
+                    </svg>
+                </div>
 
-                        {/* twitter  */}
-                        <a className="ml-3 text-gray-100 cursor-pointer">
-                            <svg
-                                fill="currentColor"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                className="w-5 h-5"
-                                viewBox="0 0 24 24"
-                            >
-                                <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" />
-                            </svg>
-                        </a>
+                <div className="w-full bg-[#00ADB5] flex flex-row justify-evenly pb-4 text-[#222831]">
+                    <div className='flex flex-col gap-2'>
+                        <h1 className='text-2xl font-semibold tracking-wider'>Customer Care</h1>
+                        <div className='flex flex-col mt-3 gap-2'>
+                            <div className='flex flex-row  gap-4'>
+                                 <FaMapMarkerAlt/>
+                                <p>Lorem ipsum dolor sit <br/>amet consectetur. 415555</p>
+                            </div>
+                            <div className='flex flex-row  gap-4'>
+                                <FaEnvelope/>
+                                <p>abc@gmail.com</p>
+                            </div>
+                            <div className='flex flex-row  gap-4'>
+                                <FaPhone/>
+                                <p>+91 1234567890</p>
+                            </div>
+                        </div>
+                    </div>
 
-                        {/* instagram  */}
-                        <a className="ml-3 text-gray-100 cursor-pointer">
-                            <svg
-                                fill="none"
-                                stroke="currentColor"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                className="w-5 h-5"
-                                viewBox="0 0 24 24"
-                            >
-                                <rect width={20} height={20} x={2} y={2} rx={5} ry={5} />
-                                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01" />
-                            </svg>
-                        </a>
+                    <div className='flex flex-col gap-2'>
+                        <h1 className='text-2xl font-semibold tracking-wider'>Useful Links</h1>
+                            <Link to="/" className="cursor-pointer hover:text-[#EEEEEE] duration-500 tracking-wider hover:underline">Home</Link>
+                            <Link to="/allproduct" className="cursor-pointer hover:text-[#EEEEEE] duration-500 tracking-wider hover:underline">All Products</Link>
+                            <Link to="/cart" className="cursor-pointer hover:text-[#EEEEEE] duration-500 tracking-wider hover:underline">Cart</Link>
+                            <Link to="/user-dashboard" className="cursor-pointer hover:text-[#EEEEEE] duration-500 tracking-wider hover:underline">Profile</Link>
+                    </div>
 
-                        {/* linkedIn  */}
-                        <a className="ml-3 text-gray-100 cursor-pointer">
-                            <svg
-                                fill="currentColor"
-                                stroke="currentColor"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={0}
-                                className="w-5 h-5"
-                                viewBox="0 0 24 24"
-                            >
-                                <path
-                                    stroke="none"
-                                    d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
-                                />
-                                <circle cx={4} cy={4} r={2} stroke="none" />
-                            </svg>
-                        </a>
-                    </span>
+                    <div className='flex flex-col gap-2'>
+                        <h1 className='text-2xl font-semibold tracking-wider'>Social Media</h1>
+                        <div className='flex flex-col gap-4'>
+                            <FaFacebook size={20}  className="cursor-pointer hover:text-[#EEEEEE] duration-500"/>
+                            <FaInstagram size={20} className="cursor-pointer hover:text-[#EEEEEE] duration-500"/>
+                            <FaTwitter size={20} className="cursor-pointer hover:text-[#EEEEEE] duration-500"/>
+                            <FaWhatsapp size={20} className="cursor-pointer hover:text-[#EEEEEE] duration-500"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="w-full bg-[#222831] text-white text-center py-4">
+                    <p className="text-md tracking-wider">@ 2024 | <Link to="/" className="hover:underline hover:text-[#00ADB5] duration-500">Estore</Link>  | All Copyrights Reserved</p>
                 </div>
             </footer>
         </div>
