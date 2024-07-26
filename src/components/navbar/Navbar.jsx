@@ -25,7 +25,7 @@ const Navbar = () => {
   const cartItem = useSelector((state) => state.cart);
 
   return (
-    <nav className='bg-[#222831] sticky top-0 text-[#EEEEEE] z-50 '>
+    <nav className='bg-[#222831] sticky top-0 text-[#EEEEEE] z-50 py-8'>
       <div className='flex flex-col justify-center items-center lg:flex-row lg:justify-between lg:items-center lg:px-8'>
         <div className='px-4 lg:px-0 lg:flex lg:items-center lg:justify-center flex flex-row justify-center items-center'>
           <Link to='/'>
