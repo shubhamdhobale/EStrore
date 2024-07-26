@@ -12,13 +12,13 @@ const Footer = () => {
                     </svg>
                 </div> */}
 
-                <div className="w-full bg-[#00ADB5] flex flex-row justify-evenly py-10 text-[#222831]">
+                <div className="w-full bg-[#00ADB5] flex flex-row gap-8 px-4 justify-evenly py-10 text-[#222831]">
                     <div className='flex flex-col gap-2'>
-                        <h1 className='text-2xl font-semibold tracking-wider'>Customer Care</h1>
+                        <h1 className='text-xl font-semibold tracking-wider'>Customer Care</h1>
                         <div className='flex flex-col mt-3 gap-2'>
                             <div className='flex flex-row  gap-4'>
                                  <FaMapMarkerAlt/>
-                                <p>Lorem ipsum dolor sit <br/>amet consectetur. 415555</p>
+                                <p>Lorem ipsum dolor <br/>amet. 415555</p>
                             </div>
                             <div className='flex flex-row  gap-4'>
                                 <FaEnvelope/>
@@ -32,7 +32,7 @@ const Footer = () => {
                     </div>
 
                     <div className='flex flex-col gap-2'>
-                        <h1 className='text-2xl font-semibold tracking-wider'>Useful Links</h1>
+                        <h1 className='text-xl font-semibold tracking-wider'>Useful Links</h1>
                             <Link to="/" className="cursor-pointer hover:text-[#EEEEEE] duration-500 tracking-wider hover:underline">Home</Link>
                             <Link to="/allproduct" className="cursor-pointer hover:text-[#EEEEEE] duration-500 tracking-wider hover:underline">All Products</Link>
                             <Link to="/cart" className="cursor-pointer hover:text-[#EEEEEE] duration-500 tracking-wider hover:underline">Cart</Link>
@@ -40,7 +40,7 @@ const Footer = () => {
                     </div>
 
                     <div className='flex flex-col gap-2'>
-                        <h1 className='text-2xl font-semibold tracking-wider'>Social Media</h1>
+                        <h1 className='text-xl font-semibold tracking-wider'>Social Media</h1>
                         <div className='flex flex-col gap-4'>
                             <FaFacebook size={20}  className="cursor-pointer hover:text-[#EEEEEE] duration-500"/>
                             <FaInstagram size={20} className="cursor-pointer hover:text-[#EEEEEE] duration-500"/>
