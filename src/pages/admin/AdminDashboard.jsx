@@ -5,35 +5,38 @@ import UserDetail from '../../components/admin/ProductDetails';
 import { useContext } from 'react';
 import myContext from '../../context/myContext';
 import 'react-tabs/style/react-tabs.css';
+import Layout from '../../components/layout/Layout';
+import admin from "../../../public/man.png"
 
 const AdminDashboard = () => {
     const user = JSON.parse(localStorage.getItem('users'));
     const context = useContext(myContext);
     const {getAllProduct, getAllOrder, getAllUser} = context;
     return (
-        <div>
+        <Layout>
             {/* Top */}
             <div className="top mb-5 px-5 mt-5">
-                <div className=" bg-pink-50 py-5 border border-pink-100 rounded-lg">
-                    <h1 className=" text-center text-2xl font-bold text-pink-500">Admin Dashboard</h1>
+                <div className="py-5">
+                    <h1 className=" text-center text-2xl font-bold text-[#00ADB5] text-shadow-md">Admin Dashboard</h1>
                 </div>
             </div>
 
             <div className="px-5">
                 {/* Mid  */}
-                <div className="mid mb-5">
+                <div className="mid mb-5 shadow-xl">
                     {/* main  */}
-                    <div className=" bg-pink-50 py-5 rounded-xl border border-pink-100">
+                    <div className="py-5 rounded-xl border flex items-center justify-center gap-11">
                         {/* image  */}
-                        <div className="flex justify-center">
-                            <img src="https://cdn-icons-png.flaticon.com/128/2202/2202112.png" alt="" />
+                        <div className="flex justify-center ">
+                            <img src={admin} alt="" />
                         </div>
                         {/* text  */}
-                           <div className="">
+                        <div className="flex flex-col items-start tracking-wide ">
                             {/* Name  */}
                             <h1 className=" text-center text-lg">
                                 <span className=" font-bold">Name : </span>
-                                {user?.name}
+                                {user?.firstname} {user?.lastname}
+
                             </h1>
 
                             {/* Email  */}
@@ -60,14 +63,14 @@ const AdminDashboard = () => {
                 {/* Bottom */}
                 <div className="">
                     <Tabs>
-                        <TabList className="flex flex-wrap -m-4 text-center justify-center">
+                        <TabList className="flex flex-wrap text-center justify-center">
 
 
 
                             {/* Total Products */}
-                            <Tab className="p-4 md:w-1/3 sm:w-1/2 w-full cursor-pointer">
-                                <div className=" border bg-pink-50 hover:bg-pink-100 border-pink-100 px-4 py-3 rounded-xl" >
-                                    <div className="text-pink-500 w-12 h-12 mb-3 inline-block" >
+                            <Tab className="p-4 md:w-1/3 sm:w-1/2 w-full cursor-pointer ">
+                                <div className=" border bg-[#00acb53b] hover:bg-[#00acb574] px-4 py-3 rounded-xl hover:shadow-xl hover:scale-105 duration-500 hover:border hover:border-[#00ADB5]" >
+                                    <div className="text-[#00ADB5] w-12 h-12 mb-3 inline-block" >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width={50}
@@ -90,8 +93,8 @@ const AdminDashboard = () => {
                                         </svg>
 
                                     </div>
-                                    <h2 className="font-medium text-3xl text-pink-400 " >{getAllProduct.length}</h2>
-                                    <p className=" text-pink-500  font-bold" >Total Products</p>
+                                    <h2 className="font-medium text-3xl text-[#222831]" >{getAllProduct.length}</h2>
+                                    <p className=" text-[#222831] font-bold" >Total Products</p>
                                 </div>
                             </Tab>
 
@@ -99,8 +102,8 @@ const AdminDashboard = () => {
 
                             {/* Total Order  */}
                             <Tab className="p-4 md:w-1/4 sm:w-1/2 w-full cursor-pointer">
-                                <div className=" border bg-pink-50 hover:bg-pink-100 border-pink-100 px-4 py-3 rounded-xl" >
-                                    <div className="text-pink-500 w-12 h-12 mb-3 inline-block" >
+                                <div className=" border bg-[#00acb53b] hover:bg-[#00acb574] px-4 py-3 rounded-xl hover:shadow-xl hover:scale-105 duration-500 hover:border hover:border-[#00ADB5]" >
+                                    <div className="w-12 h-12 mb-3 inline-block text-[#00ADB5] " >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width={50}
@@ -121,8 +124,8 @@ const AdminDashboard = () => {
                                             <path d="M6 18H4c0-1 2-2 2-3s-1-1.5-2-1" />
                                         </svg>
                                     </div>
-                                    <h2 className="font-medium text-3xl text-pink-400 " >{getAllOrder.length}</h2>
-                                    <p className=" text-pink-500  font-bold" >Total Order</p>
+                                    <h2 className="font-medium text-3xl text-[#222831]" >{getAllOrder.length}</h2>
+                                    <p className=" text-[#222831]  font-bold" >Total Order</p>
                                 </div>
                             </Tab>
 
@@ -130,8 +133,8 @@ const AdminDashboard = () => {
 
                             {/* Total User  */}
                             <Tab className="p-4 md:w-1/3 sm:w-1/2 w-full cursor-pointer">
-                                <div className=" border bg-pink-50 hover:bg-pink-100 border-pink-100 px-4 py-3 rounded-xl" >
-                                    <div className="text-pink-500 w-12 h-12 mb-3 inline-block" >
+                                <div className=" border bg-[#00acb53b] hover:bg-[#00acb574] px-4 py-3 rounded-xl hover:shadow-xl hover:scale-105 duration-500 hover:border hover:border-[#00ADB5]" >
+                                    <div className="text-[#00ADB5] w-12 h-12 mb-3 inline-block" >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width={50}
@@ -150,8 +153,8 @@ const AdminDashboard = () => {
                                             <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                                         </svg>
                                     </div>
-                                    <h2 className="font-medium text-3xl text-pink-400 " >{getAllUser.length}</h2>
-                                    <p className=" text-pink-500  font-bold" >Total User</p>
+                                    <h2 className="font-medium text-3xl text-[#222831]" >{getAllUser.length}</h2>
+                                    <p className=" text-[#222831]  font-bold" >Total User</p>
                                 </div>
                             </Tab>
                         </TabList>
@@ -170,7 +173,7 @@ const AdminDashboard = () => {
                     </Tabs>
                 </div>
             </div>
-        </div>
+        </Layout>
     );
 }
 

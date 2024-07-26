@@ -2,6 +2,7 @@ import { useContext } from "react";
 import Layout from "../../components/layout/Layout";
 import myContext from "../../context/myContext";
 import Loader from "../../components/loader/Loader";
+import userimg from "../../../public/man.png"
 
 const UserDashboard = () => {
     // user
@@ -18,17 +19,18 @@ const UserDashboard = () => {
                 {/* Top  */}
                 <div className="top ">
                     {/* main  */}
-                    <div className=" bg-pink-50 py-5 rounded-xl border border-pink-100">
+                    <div className=" shadow-xl py-5 rounded-xl border flex items-center justify-center gap-10">
                         {/* image  */}
                         <div className="flex justify-center">
-                            <img src="https://cdn-icons-png.flaticon.com/128/2202/2202112.png" alt="" />
+                            <img src={userimg} alt="" />
                         </div>
                         {/* text  */}
-                        <div className="">
+                        <div className="flex flex-col items-start">
                             {/* Name  */}
                             <h1 className=" text-center text-lg">
                                 <span className=" font-bold">Name : </span>
-                                {user?.name}
+                                {user?.firstname} {user?.lastname}
+
                             </h1>
 
                             {/* Email  */}
@@ -74,9 +76,9 @@ const UserDashboard = () => {
                                         // console.log('order', order)
                                         const { status } = order
                                         return (
-                                            <div key={index} className="mt-5 flex flex-col overflow-hidden rounded-xl border border-pink-100 md:flex-row">
+                                            <div key={index} className="mt-5 flex flex-col overflow-hidden rounded-xl border border-[#00ADB5] md:flex-row">
                                                 {/* main 3  */}
-                                                <div className="w-full border-r border-pink-100 bg-pink-50 md:max-w-xs">
+                                                <div className="w-full border-r bg-[#00acb522] md:max-w-xs">
                                                     {/* left  */}
                                                     <div className="p-8">
                                                         <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-1">
@@ -97,8 +99,11 @@ const UserDashboard = () => {
 
                                                             <div className="mb-4">
                                                                 <div className="text-sm font-semibold">Order Status</div>                              
-                                                                  <div className="text-sm font-medium text-green-800 first-letter:uppercase">{status}</div>
-                                                               
+                                                                  <div className="text-sm font-bold text-green-800 first-letter:uppercase">{status}</div>
+                                                            </div>
+                                                            <div className="mb-4">
+                                                                <div className="text-sm font-semibold">Delieverd In : </div>
+                                                                <div className="text-sm font-medium text-gray-900">2 days</div>
                                                             </div>
                                                         </div>
                                                     </div>
