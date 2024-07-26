@@ -1,7 +1,9 @@
 # eStore
 
 eStore is an online shopping platform where users can explore and purchase everyday products. It features a user-friendly interface with both user and admin dashboards, built using Vite, React, Tailwind CSS, and Firebase.
--**live demo** [https://e-strore.vercel.app/](https://e-strore.vercel.app/).
+
+
+- **live demo** [https://e-strore.vercel.app/](https://e-strore.vercel.app/).
 
 ## Features
 
