@@ -30,12 +30,12 @@ eStore is an online shopping platform where users can explore and purchase every
 
 1. **Clone the repository:**
     ```bash
-    git clone https://github.com/yourusername/estore.git
+    git clone https://github.com/shubhamdhobale/EStrore.git
     ```
 
 2. **Navigate to the project directory:**
     ```bash
-    cd estore
+    cd EStore
     ```
 
 3. **Install dependencies:**
