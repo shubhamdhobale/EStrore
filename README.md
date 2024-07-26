@@ -1,6 +1,7 @@
 # eStore
 
 eStore is an online shopping platform where users can explore and purchase everyday products. It features a user-friendly interface with both user and admin dashboards, built using Vite, React, Tailwind CSS, and Firebase.
+-**live demo** [https://e-strore.vercel.app/](https://e-strore.vercel.app/).
 
 ## Features
 
@@ -50,7 +51,7 @@ eStore is an online shopping platform where users can explore and purchase every
     npm run dev
     ```
 
-   The application will be available at `http://localhost:3000`.
+   The application will be available at `http://localhost:5173`.
 
 ## Functionalities
 
@@ -63,28 +64,21 @@ eStore is an online shopping platform where users can explore and purchase every
 ## Screenshots
 
 ### Homepage
-![Homepage](path/to/homepage-screenshot.png)
+![Homepage](/public/Home.png)
 
 ### Product Page
-![Product Page](path/to/product-page-screenshot.png)
+![Product Page](/public/products.png)
 
 ### Cart
-![Cart](path/to/cart-screenshot.png)
-
-### User Dashboard
-![User Dashboard](path/to/user-dashboard-screenshot.png)
+![Cart](/public/cart.png)
 
 ### Admin Dashboard
-![Admin Dashboard](path/to/admin-dashboard-screenshot.png)
+![Admin Dashboard](/public/admin-dash.png)
 
-## Contributing
+## Contributions
 
 Contributions are welcome! Please fork the repository and submit pull requests. For major changes or feature requests, open an issue to discuss your ideas.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Contact
 
-For any questions or support, please contact [your-email@example.com](mailto:your-email@example.com).
+For any questions or support, please contact [shubhamdhobale1945@gmail.com](mailto:shubhamdhobale1945@gmail.com).
