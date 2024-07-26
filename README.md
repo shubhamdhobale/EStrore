@@ -50,7 +50,7 @@ eStore is an online shopping platform where users can explore and purchase every
     npm run dev
     ```
 
-   The application will be available at `http://localhost:3000`.
+   The application will be available at `http://localhost:5173`.
 
 ## Functionalities
 
@@ -81,10 +81,6 @@ eStore is an online shopping platform where users can explore and purchase every
 
 Contributions are welcome! Please fork the repository and submit pull requests. For major changes or feature requests, open an issue to discuss your ideas.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## Contact
 
-For any questions or support, please contact [your-email@example.com](mailto:your-email@example.com).
+For any questions or support, please contact [shubhamdhobale1945@gmail.com](mailto:shubhamdhobale1945@gmail.com).
