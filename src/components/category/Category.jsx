@@ -2,35 +2,35 @@ import { useNavigate } from "react-router";
 
 const category = [
     {
-        image: 'https://cdn-icons-png.flaticon.com/256/4359/4359963.png',
+        image: 'https://cdn-icons-png.flaticon.com/128/8863/8863863.png',
         name: 'fashion'
     },
     {
-        image: 'https://cdn-icons-png.flaticon.com/256/11833/11833323.png',
+        image: 'https://cdn-icons-png.flaticon.com/128/2957/2957379.png',
         name: 'shirt'
     },
     {
-        image: 'https://cdn-icons-png.flaticon.com/256/8174/8174424.png',
+        image: 'https://cdn-icons-png.flaticon.com/128/2806/2806045.png',
         name: 'jacket'
     },
     {
-        image: 'https://cdn-icons-png.flaticon.com/256/7648/7648246.png',
+        image: 'https://cdn-icons-png.flaticon.com/128/3137/3137807.png',
         name: 'mobile'
     },
     {
-        image: 'https://cdn-icons-png.flaticon.com/256/12142/12142416.png',
+        image: 'https://cdn-icons-png.flaticon.com/128/428/428001.png',
         name: 'laptop'
     },
     {
-        image: 'https://cdn-icons-png.flaticon.com/256/10686/10686553.png',
+        image: 'https://cdn-icons-png.flaticon.com/128/2742/2742687.png',
         name: 'shoes'
     },
     {
-        image: 'https://cdn-icons-png.flaticon.com/256/12114/12114279.png',
+        image: 'https://cdn-icons-png.flaticon.com/128/3659/3659933.png',
         name: 'home'
     },
     {
-        image: 'https://cdn-icons-png.flaticon.com/256/11946/11946316.png',
+        image: 'https://cdn-icons-png.flaticon.com/128/5832/5832416.png',
         name: 'books'
     }
 ]

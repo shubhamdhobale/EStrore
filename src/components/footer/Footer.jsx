@@ -6,13 +6,13 @@ const Footer = () => {
         <div>   
             {/* footer  */}
             <footer className="w-full relative">
-                <div className="">
+                {/* <div className="">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                         <path fill="#00ADB5" fillOpacity="1" d="M0,64L30,96C60,128,120,192,180,181.3C240,171,300,85,360,42.7C420,0,480,0,540,42.7C600,85,660,171,720,176C780,181,840,107,900,74.7C960,43,1020,53,1080,85.3C1140,117,1200,171,1260,192C1320,213,1380,203,1410,197.3L1440,192L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320L0,320Z"></path>
                     </svg>
-                </div>
+                </div> */}
 
-                <div className="w-full bg-[#00ADB5] flex flex-row justify-evenly pb-4 text-[#222831]">
+                <div className="w-full bg-[#00ADB5] flex flex-row justify-evenly py-10 text-[#222831]">
                     <div className='flex flex-col gap-2'>
                         <h1 className='text-2xl font-semibold tracking-wider'>Customer Care</h1>
                         <div className='flex flex-col mt-3 gap-2'>
