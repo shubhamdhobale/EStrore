@@ -5,7 +5,8 @@ import UserDetail from '../../components/admin/ProductDetails';
 import { useContext } from 'react';
 import myContext from '../../context/myContext';
 import 'react-tabs/style/react-tabs.css';
-import Layout from '../../components/layout/Layout';
+import Layout from '../../components/layout/Layout'; 
+import Employee from '../../components/employee/Employee.jsx'
 import admin from "../../../public/man.png"
 
 const AdminDashboard = () => {
@@ -58,6 +59,10 @@ const AdminDashboard = () => {
                             </h1>
                         </div>
                     </div>
+                </div>
+
+                <div>
+                    <Employee/>
                 </div>
 
                 {/* Bottom */}

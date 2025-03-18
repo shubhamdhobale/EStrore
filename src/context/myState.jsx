@@ -38,7 +38,6 @@ function MyState({ children }) {
         }
     }
 
-
     const getAllOrderFunction = async () => {
         setLoading(true);
         try {

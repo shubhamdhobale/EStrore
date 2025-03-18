@@ -16,6 +16,10 @@ import { ProtectedRouteForUser } from "./protectedRoute/ProtectedRouteForUser";
 import { ProtectedRouteForAdmin } from "./protectedRoute/ProtectedRouteForAdmin";
 import AddProductPage from './pages/admin/AddProductPage.jsx';
 import CategoryPage from './pages/category/CategoryPage.jsx';
+import AddEmployee from './components/employee/AddEmployee.jsx';
+import EmployeeData from './components/employee/EmployeeData.jsx';
+import SeasonwiseOffer from './components/offer/SeasonwiseOffer.jsx';
+import CurrentOffer from './components/offer/CurrentOffer.jsx';
 
 function App() {
   return (
@@ -44,6 +48,26 @@ function App() {
           <Route path="/addproduct" element={
             <ProtectedRouteForAdmin>
               <AddProductPage />
+            </ProtectedRouteForAdmin>
+          } />
+          <Route path="/addemployee" element={
+            <ProtectedRouteForAdmin>
+              <AddEmployee />
+            </ProtectedRouteForAdmin>
+          } />
+          <Route path="/employeedata" element={
+            <ProtectedRouteForAdmin>
+              <EmployeeData />
+            </ProtectedRouteForAdmin>
+          } />
+          <Route path="/seasonwiseoffer" element={
+            <ProtectedRouteForAdmin>
+              <SeasonwiseOffer />
+            </ProtectedRouteForAdmin>
+          } />
+          <Route path="/currentoffer" element={
+            <ProtectedRouteForAdmin>
+              <CurrentOffer />
             </ProtectedRouteForAdmin>
           } />
           <Route path={`/updateproduct/:id`} element={
