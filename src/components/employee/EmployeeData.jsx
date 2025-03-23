@@ -12,6 +12,8 @@ const EmployeeData = () => {
     const navigate = useNavigate();
     const context = useContext(myContext);
     const { getAllUserFunction } = context;
+    const [selectedEmployee, setSelectedEmployee] = useState(null);
+
 
     useEffect(() => {
         fetchEmployees();
@@ -82,31 +84,36 @@ const EmployeeData = () => {
         navigate('/admin-dashboard');
     };
 
-    const handleLeaveAction = async (employeeId, leaveIndex, action) => {
-        try {
-            const employeeRef = doc(fireDB, "employees", employeeId);
-            const employeeSnap = await getDoc(employeeRef);
-    
-            if (employeeSnap.exists()) {
-                let employeeData = employeeSnap.data();
-                let updatedLeaves = [...employeeData.leaveRequests];
-    
-                if (action === "Accept") {
-                    updatedLeaves[leaveIndex].status = "Approved";
-                } else {
-                    updatedLeaves[leaveIndex].status = "Rejected";
-                }
-    
-                await updateDoc(employeeRef, { leaveRequests: updatedLeaves });
-                toast.success(`Leave ${action.toLowerCase()}ed successfully!`);
-    
-                fetchEmployees(); // Refresh UI
-            }
-        } catch (error) {
-            console.error("Error updating leave status:", error);
-            toast.error("Failed to update leave status.");
-        }
+    // Open modal to confirm salary credit
+    const handleCreditSalary = (employee) => {
+        setSelectedEmployee(employee);
     };
+
+    // const handleLeaveAction = async (employeeId, leaveIndex, action) => {
+    //     try {
+    //         const employeeRef = doc(fireDB, "employees", employeeId);
+    //         const employeeSnap = await getDoc(employeeRef);
+    
+    //         if (employeeSnap.exists()) {
+    //             let employeeData = employeeSnap.data();
+    //             let updatedLeaves = [...employeeData.leaveRequests];
+    
+    //             if (action === "Accept") {
+    //                 updatedLeaves[leaveIndex].status = "Approved";
+    //             } else {
+    //                 updatedLeaves[leaveIndex].status = "Rejected";
+    //             }
+    
+    //             await updateDoc(employeeRef, { leaveRequests: updatedLeaves });
+    //             toast.success(`Leave ${action.toLowerCase()}ed successfully!`);
+    
+    //             fetchEmployees(); // Refresh UI
+    //         }
+    //     } catch (error) {
+    //         console.error("Error updating leave status:", error);
+    //         toast.error("Failed to update leave status.");
+    //     }
+    // };
     
 
     return (
@@ -125,6 +132,7 @@ const EmployeeData = () => {
                                 <th className="border px-4 py-2">Role</th>
                                 <th className="border px-4 py-2">Leave</th>
                                 <th className="border px-4 py-2">Salary</th>
+                                <th className="border px-4 py-2">Actions</th>
                                 <th className="border px-4 py-2">Actions</th>
                             </tr>
                         </thead>
@@ -150,6 +158,14 @@ const EmployeeData = () => {
                                             Reject Leave
                                         </button>
                                     </td>
+                                    <td className="border px-4 py-2">
+                                        <button
+                                            onClick={() => handleCreditSalary(employee)}
+                                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded"
+                                        >
+                                        Credit Salary
+                                        </button>
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>
@@ -159,6 +175,26 @@ const EmployeeData = () => {
                 <button className="text-[#00ADB5] font-bold relative mt-6 left-1/2" onClick={handleClick}>
                     Back
                 </button>
+
+                 {/* Popup Modal for Salary Credited */}
+                 {selectedEmployee && (
+                    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                        <div className="bg-white p-6 rounded-lg shadow-md text-center">
+                            <h3 className="text-lg font-bold text-green-600">
+                                Salary Credited to {selectedEmployee.name}!
+                            </h3>
+                            <p className="text-gray-600">
+                                Salary of ₹{selectedEmployee.salary} has been credited successfully.
+                            </p>
+                            <button
+                                onClick={() => setSelectedEmployee(null)}
+                                className="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                            >
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                )}
             </div>
         </Layout>
     );
