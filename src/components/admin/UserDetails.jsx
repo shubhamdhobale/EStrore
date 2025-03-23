@@ -29,7 +29,7 @@ const UserDetail = () => {
                                     return (
                                         <tr key={index}>
                                             <td className="h-12 px-6 border-t border-black">{index + 1}</td>
-                                            <td className="h-12 px-6 border-t border-l border-black ">{value.firstname} {value.lastname}</td>
+                                            <td className="h-12 px-6 border-t border-l border-black ">{value.name} {value.lastname}</td>
                                             <td className="h-12 px-6 border-t border-l border-black">{value.email}</td>
                                             <td className="h-12 px-6 border-t border-l border-black ">{value.uid}</td>
                                             <td className="h-12 px-6 border-t border-l border-black ">{value.role}</td>

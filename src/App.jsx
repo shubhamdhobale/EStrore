@@ -20,6 +20,10 @@ import AddEmployee from './components/employee/AddEmployee.jsx';
 import EmployeeData from './components/employee/EmployeeData.jsx';
 import SeasonwiseOffer from './components/offer/SeasonwiseOffer.jsx';
 import CurrentOffer from './components/offer/CurrentOffer.jsx';
+import AddSupplier from './components/suppliers/AddSupplier.jsx';
+import SupplierData from './components/suppliers/SupplierData.jsx';
+import { ProtectedRouteForEmployee } from './protectedRoute/ProtectedRouteForEmployee.jsx';
+import EmployeeDashboad from './pages/employee/EmployeeDashboad.jsx';
 
 function App() {
   return (
@@ -70,11 +74,27 @@ function App() {
               <CurrentOffer />
             </ProtectedRouteForAdmin>
           } />
+          <Route path="/addsuppliers" element={
+            <ProtectedRouteForAdmin>
+              <AddSupplier />
+            </ProtectedRouteForAdmin>
+          } />
+          <Route path="/suppliersdata" element={
+            <ProtectedRouteForAdmin>
+              <SupplierData />
+            </ProtectedRouteForAdmin>
+          } />
+          <Route path="/employee-dashboard" element={
+            <ProtectedRouteForEmployee>
+              <EmployeeDashboad />
+            </ProtectedRouteForEmployee>
+          } />
           <Route path={`/updateproduct/:id`} element={
             <ProtectedRouteForAdmin>
               <UpdateProductPage />
             </ProtectedRouteForAdmin>
           } />
+          
         </Routes>
         <Toaster/>
      </Router>

@@ -1,28 +1,32 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 import MyContext from './myContext';
-import { collection, deleteDoc, doc, onSnapshot, orderBy, query } from 'firebase/firestore';
-import { fireDB } from '../firebase/FirebaseConfig';
+import { collection, deleteDoc, doc, getDocs, onSnapshot, orderBy, query } from 'firebase/firestore';
+import { fireDB, auth } from '../firebase/FirebaseConfig'; 
+import { onAuthStateChanged } from 'firebase/auth';
 import toast from 'react-hot-toast';
 
 function MyState({ children }) {
-    // Loading State 
     const [loading, setLoading] = useState(false);
-
-    // User State
     const [getAllProduct, setGetAllProduct] = useState([]);
     const [getAllOrder, setGetAllOrder] = useState([]);
     const [getAllUser, setGetAllUser] = useState([]);
+    const [user, setUser] = useState(null); 
+    const [orders, setOrders] = useState([]);
 
-
+    // ✅ Track Authentication State
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            console.log("Firebase Auth Changed:", currentUser);
+            setUser(currentUser); 
+        });
+        return () => unsubscribe();
+    }, []);
 
     const getAllProductFunction = async () => {
         setLoading(true);
         try {
-            const q = query(
-                collection(fireDB, "products"),
-                orderBy('time')
-            );
+            const q = query(collection(fireDB, "products"), orderBy('time'));
             const data = onSnapshot(q, (QuerySnapshot) => {
                 let productArray = [];
                 QuerySnapshot.forEach((doc) => {
@@ -36,15 +40,12 @@ function MyState({ children }) {
             console.log(error);
             setLoading(false);
         }
-    }
+    };
 
     const getAllOrderFunction = async () => {
         setLoading(true);
         try {
-            const q = query(
-                collection(fireDB, "order"),
-                orderBy('time')
-            );
+            const q = query(collection(fireDB, "order"), orderBy('time'));
             const data = onSnapshot(q, (QuerySnapshot) => {
                 let orderArray = [];
                 QuerySnapshot.forEach((doc) => {
@@ -58,28 +59,25 @@ function MyState({ children }) {
             console.log(error);
             setLoading(false);
         }
-    }
+    };
 
     const deleteProduct = async (id) => {
-        setLoading(true)
+        setLoading(true);
         try {
-            await deleteDoc(doc(fireDB, 'order', id))
-            toast.success('Order Deleted successfully')
+            await deleteDoc(doc(fireDB, 'order', id));
+            toast.success('Order Deleted successfully');
             getAllOrderFunction();
-            setLoading(false)
+            setLoading(false);
         } catch (error) {
-            console.log(error)
-            setLoading(false)
+            console.log(error);
+            setLoading(false);
         }
-    }
+    };
 
     const getAllUserFunction = async () => {
         setLoading(true);
         try {
-            const q = query(
-                collection(fireDB, "user"),
-                orderBy('time')
-            );
+            const q = query(collection(fireDB, "user"), orderBy('time'));
             const data = onSnapshot(q, (QuerySnapshot) => {
                 let userArray = [];
                 QuerySnapshot.forEach((doc) => {
@@ -93,31 +91,48 @@ function MyState({ children }) {
             console.log(error);
             setLoading(false);
         }
-    }
+    };
+
+    const getAllOrders = async () => {
+        try {
+            const orderCollection = await getDocs(collection(fireDB, "orders"));
+            const orderList = orderCollection.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data(),
+            }));
+
+            console.log("Fetched Orders:", orderList); // Debugging
+            setOrders(orderList);
+        } catch (error) {
+            console.error("Error fetching orders:", error);
+            setOrders([]); // Prevent issues if fetch fails
+        }
+    };
 
     useEffect(() => {
         getAllProductFunction();
         getAllOrderFunction();
         getAllUserFunction();
+        getAllOrders();
     }, []);
-
-
 
     return (
         <MyContext.Provider value={{
             loading,
             setLoading,
+            user, 
             getAllProductFunction,
             getAllProduct,
             getAllOrder,
             getAllOrderFunction,
             deleteProduct,
             getAllUser,
-            getAllUserFunction
+            getAllUserFunction,
+            orders
         }}>
             {children}
         </MyContext.Provider>
-    )
+    );
 }
 
-export default MyState
+export default MyState;

@@ -8,6 +8,7 @@ import 'react-tabs/style/react-tabs.css';
 import Layout from '../../components/layout/Layout'; 
 import Employee from '../../components/employee/Employee.jsx'
 import admin from "../../../public/man.png"
+import SalesInsights from '../../components/admin/SalesInsights.jsx';
 
 const AdminDashboard = () => {
     const user = JSON.parse(localStorage.getItem('users'));
@@ -69,9 +70,6 @@ const AdminDashboard = () => {
                 <div className="">
                     <Tabs>
                         <TabList className="flex flex-wrap text-center justify-center">
-
-
-
                             {/* Total Products */}
                             <Tab className="p-4 md:w-1/3 sm:w-1/2 w-full cursor-pointer ">
                                 <div className=" border bg-[#00acb53b] hover:bg-[#00acb574] px-4 py-3 rounded-xl hover:shadow-xl hover:scale-105 duration-500 hover:border hover:border-[#00ADB5]" >
@@ -103,8 +101,6 @@ const AdminDashboard = () => {
                                 </div>
                             </Tab>
 
-
-
                             {/* Total Order  */}
                             <Tab className="p-4 md:w-1/4 sm:w-1/2 w-full cursor-pointer">
                                 <div className=" border bg-[#00acb53b] hover:bg-[#00acb574] px-4 py-3 rounded-xl hover:shadow-xl hover:scale-105 duration-500 hover:border hover:border-[#00ADB5]" >
@@ -134,8 +130,6 @@ const AdminDashboard = () => {
                                 </div>
                             </Tab>
 
-
-
                             {/* Total User  */}
                             <Tab className="p-4 md:w-1/3 sm:w-1/2 w-full cursor-pointer">
                                 <div className=" border bg-[#00acb53b] hover:bg-[#00acb574] px-4 py-3 rounded-xl hover:shadow-xl hover:scale-105 duration-500 hover:border hover:border-[#00ADB5]" >
@@ -162,6 +156,33 @@ const AdminDashboard = () => {
                                     <p className=" text-[#222831]  font-bold" >Total User</p>
                                 </div>
                             </Tab>
+
+                            {/* Sales Insights */}
+                            <Tab className="p-4 md:w-1/3 sm:w-1/2 w-full cursor-pointer">
+                                <div className=" border bg-[#00acb53b] hover:bg-[#00acb574] px-4 py-3 rounded-xl hover:shadow-xl hover:scale-105 duration-500 hover:border hover:border-[#00ADB5]" >
+                                    <div className="text-[#00ADB5] w-12 h-12 mb-3 inline-block" >
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width={50}
+                                            height={50}
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth={2}
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            className="lucide lucide-users"
+                                        >
+                                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+                                            <circle cx={9} cy={7} r={4} />
+                                            <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+                                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                        </svg>
+                                    </div>
+                                    {/* <h2 className="font-medium text-3xl text-[#222831]" >{getAllUser.length}</h2> */}
+                                    <p className=" text-[#222831]  font-bold" >Sales Insights</p>
+                                </div>
+                            </Tab>
                         </TabList>
 
 
@@ -173,6 +194,9 @@ const AdminDashboard = () => {
                         </TabPanel>
                         <TabPanel>
                             <OrderDetail/>
+                        </TabPanel>
+                        <TabPanel>
+                            <SalesInsights/>
                         </TabPanel>
 
                     </Tabs>

@@ -9,25 +9,19 @@ import { addDoc , Timestamp , collection } from "firebase/firestore";
 import myContext from "../../context/myContext";
 import Loader from "../../components/loader/Loader";
 
-
 const Signup = () => {
-    
-
     const context = useContext(myContext);
     const {loading , setLoading } = context;
-
     const navigate = useNavigate();
-
     const [formData , setFormData] = useState({
-        firstname:"",
-        lastname:"",
+        name:"",
         email: "",
         password: "",
-        role:"user"
+        role:""
     })
 
     const handleSubmit =  async () => {
-        if(formData.firstname == "" || formData.lastname == "" || formData.email == "" || formData.password == ""){
+        if(formData.name == "" || formData.email == "" || formData.password == ""){
             return toast.error("All Fields are required");
         }
         setLoading(true);
@@ -36,8 +30,7 @@ const Signup = () => {
             const users = await createUserWithEmailAndPassword(auth , formData.email , formData.password);
 
             const user = {
-                firstname: formData.firstname,
-                lastname: formData.lastname,
+                name: formData.name,
                 email: formData.email,
                 role: formData.role,
                 uid: users.user.uid,
@@ -53,14 +46,13 @@ const Signup = () => {
             }
 
             const userRefrence = collection(fireDB , "user")
-
             addDoc(userRefrence , user);
 
             setFormData({
-                firstname:"",
-                lastname:"",
+                name:"",
                 email: "",
                 password: "",
+                role : ""
             })
             toast.success("Signup Successfully");
             setLoading(false);
@@ -99,23 +91,13 @@ const Signup = () => {
                 <div className="mb-3">
                     <input
                         type="text"
-                        placeholder='First Name'
-                        value={formData.firstname}
+                        placeholder='Name'
+                        value={formData.name}
                         onChange={handleChange}
-                        name="firstname"
+                        name="name"
                         className=' border border-[#00ADB5] px-2 py-2 w-96 rounded-md outline-none placeholder-[#00ADB5]'
                     />
-                </div>
-                <div className="mb-3">
-                    <input
-                        type="text"
-                        placeholder='last Name'
-                        value={formData.lastname}
-                        onChange={handleChange}
-                        name="lastname"
-                        className=' border border-[#00ADB5] px-2 py-2 w-96 rounded-md outline-none placeholder-[#00ADB5]'
-                    />
-                </div>
+                </div>                
 
                 {/* Input Two  */}
                 <div className="mb-3">

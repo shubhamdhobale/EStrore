@@ -40,6 +40,25 @@ const Employee = () => {
           </Link>
         </div>
       </div>
+
+      {/* Supplier Management */}
+      <div className="bg-white shadow-lg rounded-xl p-6 w-80 text-center border border-gray-300 hover:shadow-2xl transition-all duration-300">
+        <h1 className="text-2xl font-bold text-[#00ADB5] mb-4">👨‍💼 Supplier Management</h1>
+        <div className="flex flex-col gap-4">
+          <Link 
+            to='/addsuppliers' 
+            className="px-5 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-all"
+          >
+            ➕ Add Supplier
+          </Link>
+          <Link 
+            to='/suppliersdata' 
+            className="px-5 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-all"
+          >
+            📊 Supplier Data
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };
