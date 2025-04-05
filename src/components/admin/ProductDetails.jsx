@@ -66,7 +66,7 @@ const ProductDetail = () => {
         try {
             const productRef = doc(fireDB, "products", product.id);
             await updateDoc(productRef, {
-                quantity: product.quantity + 50 // Add ordered quantity
+                quantity: product.quantity + 500 // Add ordered quantity
             });
             toast.success(`Stock updated for ${product.title}`);
             getAllProductFunction();

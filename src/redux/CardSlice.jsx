@@ -15,25 +15,18 @@ export const cartSlice = createSlice({
             return state.filter(item => item.id != action.payload.id);
         },
 
-        incrementQuantity: (state, action) => {
-            state = state.map(item => {
-                if (item.id === action.payload) {
-                    item.quantity++;
-                }
-                return item;
-            });
+        incrementQuantity(state, action) {
+            const item = state.find((item) => item.id === action.payload);
+            if (item) {
+                item.quantity += 1;
+            }
         },
 
-        decrementQuantity: (state, action) => {
-            state = state.map(item => {
-                if (item.quantity !== 1) {
-                    if (item.id === action.payload) {
-                        item.quantity--;
-                    }
-                }
-                return item;
-
-            })
+        decrementQuantity(state, action) {
+            const item = state.find((item) => item.id === action.payload);
+            if (item && item.quantity > 1) {
+                item.quantity -= 1;
+            }
         },
     },
 })

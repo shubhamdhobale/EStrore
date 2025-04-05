@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "../../components/layout/Layout";
 import { Trash } from 'lucide-react';
-import { decrementQuantity, deleteFromCart, incrementQuantity } from "../../redux/CardSlice";
+import { decrementQuantity, deleteFromCart, incrementQuantity } from "../../redux/CardSlice.jsx";
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
 import { Timestamp, addDoc, collection, doc, updateDoc, getDoc } from "firebase/firestore";

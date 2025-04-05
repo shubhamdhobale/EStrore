@@ -94,10 +94,6 @@ const EmployeeData = () => {
       };
       
 
-    //   const handleLeaveReject = async () => {
-    //     toast.success("Leave rejected successfully")
-    //   }
-
   return (
     <Layout>
         <div className="p-6 bg-gray-100 min-h-screen">
@@ -154,24 +150,27 @@ const EmployeeData = () => {
                     <span className="italic text-gray-500">No Leave Requests</span>
                   )}
                 </td>
-                <td className="border px-4 py-2 flex gap-2 justify-center items-center">
+                <td className="flex gap-2 justify-center items-center pt-4">
+                  <div className="flex items-center justify-center gap-2 ">
                     <button
-                        onClick={() => handleLeaveApproval(emp.id, true)}
-                        className="bg-green-500 hover:bg-green-700 text-white font-bold py-1 px-3 rounded"
-                    >
-                        Approve Leave
-                    </button>
-                    <button
-                        onClick={() => handleLeaveApproval(emp.id, false)}
-                        className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-3 rounded"
-                    >
-                        Reject Leave
-                    </button>
+                          onClick={() => handleLeaveApproval(emp.id, true)}
+                          className="bg-green-500 hover:bg-green-700 text-white font-bold text-sm rounded"
+                      >
+                          Approve Leave
+                      </button>
+                      <button
+                          onClick={() => handleLeaveApproval(emp.id, false)}
+                          className="bg-red-500 hover:bg-red-700 text-white font-bold text-sm rounded"
+                      >
+                          Reject Leave
+                      </button>
+                  </div>
+                    
                 </td>
                 <td className="border px-4 py-2">
                     <button
                         onClick={() => handleCreditSalary(emp)}
-                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-3 rounded"
+                        className="bg-blue-500 hover:bg-blue-700 text-white font-bold text-sm rounded"
                     >
                         Credit Salary
                     </button>
@@ -190,7 +189,16 @@ const EmployeeData = () => {
                     Salary Credited to {selectedEmployee.name}!
                 </h3>
                 <p className="text-gray-600">
-                    Salary of ₹{selectedEmployee.salary} has been credited successfully.
+                  Salary of ₹
+                  {(() => {
+                    const totalSalary = parseFloat(selectedEmployee.salary) || 0;
+                    const leaveCount = parseInt(selectedEmployee.leaveCount) || 0;
+                    const perDaySalary = totalSalary / 30;
+                    const deducted = leaveCount * perDaySalary;
+                    const calculated = totalSalary - deducted;
+                    return calculated.toFixed(2);
+                  })()}{" "}
+                  has been credited successfully.
                 </p>
                 <button
                     onClick={() => setSelectedEmployee(null)}

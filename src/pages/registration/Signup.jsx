@@ -17,7 +17,7 @@ const Signup = () => {
         name:"",
         email: "",
         password: "",
-        role:""
+        role:"user"
     })
 
     const handleSubmit =  async () => {

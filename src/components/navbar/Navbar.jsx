@@ -43,8 +43,8 @@ const Navbar = () => {
             <li><Link to='/cart'>Cart {cartItem.length > 0 ? <sup className='text-red-600 font-bold text-sm'>{cartItem.length}</sup> : null}</Link></li>
             {!user && <li><Link to='/signup'>Signup</Link></li>}
             {!user && <li><Link to='/login'>Login</Link></li>}
-            {user?.role === 'user' && <li><Link to='/user-dashboard'>Hi, {user.firstname}</Link></li>}
-            {user?.role === 'admin' && <li><Link to='/admin-dashboard'>Hi, {user.firstname}</Link></li>}
+            {user?.role === 'user' && <li><Link to='/user-dashboard'>Hi, {user.name}</Link></li>}
+            {user?.role === 'admin' && <li><Link to='/admin-dashboard'>Hi, {user.name}</Link></li>}
             {user?.role === 'employee' && <li><Link to='/employee-dashboard'>Hi, {user.name}</Link></li>}
             {user && <li className='cursor-pointer flex items-center gap-2' onClick={logout}>Sign out <FaSignOutAlt /></li>}
           </ul>
