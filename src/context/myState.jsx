@@ -17,7 +17,7 @@ function MyState({ children }) {
     // ✅ Track Authentication State
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-            console.log("Firebase Auth Changed:", currentUser);
+            // console.log("Firebase Auth Changed:", currentUser);
             setUser(currentUser); 
         });
         return () => unsubscribe();
@@ -101,7 +101,7 @@ function MyState({ children }) {
                 ...doc.data(),
             }));
 
-            console.log("Fetched Orders:", orderList); // Debugging
+            // console.log("Fetched Orders:", orderList); // Debugging
             setOrders(orderList);
         } catch (error) {
             console.error("Error fetching orders:", error);

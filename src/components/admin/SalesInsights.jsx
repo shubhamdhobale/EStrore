@@ -1,7 +1,8 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Bar, Pie } from "react-chartjs-2";
 import { Chart, CategoryScale, LinearScale, BarElement, Title, Tooltip, ArcElement } from "chart.js";
 import myContext from "../../context/myContext";
+import { subDays, subWeeks, subMonths, isAfter } from "date-fns";
 
 // Register required components for Chart.js
 Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, ArcElement);
@@ -9,14 +10,38 @@ Chart.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, ArcElemen
 const SalesInsights = () => {
     const context = useContext(myContext);
     const { getAllOrder } = context;
+    const [filter, setFilter] = useState("tillDate");
 
     if (!Array.isArray(getAllOrder)) {
         return <p>Loading sales data...</p>; 
     }
 
+    // Define filter logic
+    const filterOrdersByDate = (orders, filterType) => {
+        const now = new Date();
+        return orders.filter(order => {
+            const orderDate = new Date(order.date); 
+
+            switch (filterType) {
+                case "daily":
+                    return isAfter(orderDate, subDays(now, 1));
+                case "weekly":
+                    return isAfter(orderDate, subWeeks(now, 1));
+                case "monthly":
+                    return isAfter(orderDate, subMonths(now, 1));
+                case "tillDate":
+                default:
+                    return true;
+            }
+        });
+    };
+
+    // Get filtered orders based on selected time interval
+    const filteredOrders = filterOrdersByDate(getAllOrder, filter);
+
     // Group sales data by category
     const categorySales = {};
-    getAllOrder.forEach(order => {
+    filteredOrders.forEach(order => {
         if (Array.isArray(order.cartItems)) {
             order.cartItems.forEach(item => {
                 const { category, price, quantity } = item;
@@ -55,6 +80,21 @@ const SalesInsights = () => {
     return (
         <div className="p-6">
             <h1 className="text-3xl text-black font-bold text-center mb-6">Sales Insights</h1>
+
+            {/* Filter Options */}
+            <div className="flex justify-center space-x-4 mb-6">
+                {["daily", "weekly", "monthly", "tillDate"].map((option) => (
+                    <button
+                        key={option}
+                        onClick={() => setFilter(option)}
+                        className={`px-4 py-2 rounded-md ${
+                            filter === option ? "bg-[#00ADB5] text-white" : "bg-gray-200 text-black"
+                        }`}
+                    >
+                        {option.charAt(0).toUpperCase() + option.slice(1)}
+                    </button>
+                ))}
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Bar Chart - Total Quantity Sold per Category */}

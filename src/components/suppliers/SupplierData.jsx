@@ -26,7 +26,7 @@ const SupplierData = () => {
             }));
             setSuppliers(employeeList);
         } catch (error) {
-            console.error("Error fetching suppliers:", error);
+            // console.error("Error fetching suppliers:", error);
             toast.error("Failed to load suppliers.");
         }
         setLoading(false);
